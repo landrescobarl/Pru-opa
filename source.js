@@ -1,48 +1,40 @@
-console.log('Connection ...ok')
+console.log('Connection ...ok');
 
+var btn_agregar = document.getElementById("btn_agragar");
+var btn_calcular = document.getElementById("btn_calcular");
+var box_peso = document.getElementById("box_peso");
+var box_calorias = document.getElementById("box_calorias");
 
-let min_calorias = 15, max_peso = 10;
+var total_peso = 0,
+    total_calorias = 0;
+var min_calorias = 15,
+    max_peso = 10;
+var elementos = [];
 
-let elementos = [
-    {
-        id: 'E1',
-        calorias: 5,
-        peso: 3
-    },
-    {
-        id: 'E2',
-        calorias: 3,
-        peso: 5
-    },
-    {
-        id: 'E3',
-        calorias: 5,
-        peso: 2
-    },
-    {
-        id: 'E4',
-        calorias: 1,
-        peso: 8
-    },    {
-        id: 'E5',
-        calorias: 2,
-        peso: 3
-    },
-
-]
-
-let calc = (elementos) => {
-    
-    let total_peso = 0, total_calorias = 0;
-    total_peso = elementos[0].peso + elementos[1].peso + elementos[3].peso;
-    total_calorias = elementos[0].calorias + elementos[1].calorias + elementos[3].calorias;
-
-    if (total_peso>max_peso & total_calorias<min_calorias) {
-        console.log("a caminar")
+function score() {
+    if (total_peso <= max_peso && total_calorias >= min_calorias) {
+        alert("a caminar");
+        console.log(total_peso + ' ' + total_calorias);
+    } else {
+        alert("no caminar");
+        console.log(total_peso + ' ' + total_calorias);
     }
-
-
-
 }
 
-calc (elementos);
+var calcular = function calcular(param) {
+    for (var t in elementos) {
+        total_peso = parseInt(elementos[t].peso) + total_peso;
+        total_calorias = parseInt(elementos[t].calorias) + total_calorias;
+    }
+
+    score();
+};
+
+btn_agregar.addEventListener("click", function (evento) {
+    elementos.push({ peso: box_peso.value, calorias: box_calorias.value });
+    console.log(elementos);
+});
+
+btn_calcular.addEventListener("click", function (evento) {
+    calcular(elementos);
+});
