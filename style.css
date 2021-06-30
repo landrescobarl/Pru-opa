@@ -1,0 +1,35 @@
+* {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+ 
+}
+
+body {
+    display: grid;
+    place-items: center;
+}
+
+.card_system {
+
+    width: 60rem;
+    height: 20rem;
+}
+
+.vw {
+    display: block;
+}
+
+.no-vw {
+    display: none;
+}
+
+td {
+    margin: auto;
+    padding-left: 50px;
+}
+
+.btn {
+    float: right;
+    margin-top: 30px;
+}
